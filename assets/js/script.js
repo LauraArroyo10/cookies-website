@@ -377,6 +377,44 @@
   }
 
   /* ------------------------------------------------------------------
+     Mobile navigation
+     ------------------------------------------------------------------ */
+  function initMobileNav() {
+    const button = $('.menu-toggle');
+    const nav = $('.site-nav');
+    if (!button || !nav) return;
+
+    const close = (returnFocus) => {
+      button.setAttribute('aria-expanded', 'false');
+      button.setAttribute('aria-label', 'Open navigation menu');
+      nav.classList.remove('is-open');
+      if (returnFocus) button.focus();
+    };
+
+    button.addEventListener('click', () => {
+      const isOpen = button.getAttribute('aria-expanded') === 'true';
+      if (isOpen) {
+        close(false);
+        return;
+      }
+
+      button.setAttribute('aria-expanded', 'true');
+      button.setAttribute('aria-label', 'Close navigation menu');
+      nav.classList.add('is-open');
+    });
+
+    nav.addEventListener('click', (event) => {
+      if (event.target.closest('a')) close(false);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && button.getAttribute('aria-expanded') === 'true') {
+        close(true);
+      }
+    });
+  }
+
+  /* ------------------------------------------------------------------
      Reveal on scroll
      ------------------------------------------------------------------ */
   function initReveal() {
@@ -433,16 +471,20 @@
     if (cookies.length !== 3) return;
 
     let timer;
-    const positions = ['left', 'center', 'right'];
+    const nextPosition = {
+      left: 'right',
+      center: 'left',
+      right: 'center'
+    };
 
     const rotate = () => {
       cookies.forEach((cookie) => {
-        const current = positions.findIndex((position) =>
+        const current = Object.keys(nextPosition).find((position) =>
           cookie.classList.contains(`hero__cookie--${position}`)
         );
-        const next = (current + 1) % positions.length;
-        cookie.classList.remove(`hero__cookie--${positions[current]}`);
-        cookie.classList.add(`hero__cookie--${positions[next]}`);
+        if (!current) return;
+        cookie.classList.remove(`hero__cookie--${current}`);
+        cookie.classList.add(`hero__cookie--${nextPosition[current]}`);
       });
     };
 
@@ -480,6 +522,7 @@
     initForms();
     initOrderDialog();
     initNavSpy();
+    initMobileNav();
     initReveal();
   }
 

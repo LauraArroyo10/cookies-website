@@ -16,9 +16,14 @@
 
   <header class="site-header">
     <a class="logo" href="index.html" aria-label="Yayis — home">Yayis</a>
+    <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="site-nav">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </button>
   </header>
 
-  <nav class="site-nav" aria-label="Main navigation">
+  <nav class="site-nav" id="site-nav" aria-label="Main navigation">
     <a href="index.html" class="is-active" aria-current="page">What's coming</a>
     <a href="about.html#about">About us</a>
     <a href="about.html#products">More Products</a>
@@ -67,6 +72,7 @@
         </div>
         <div class="product__body">
           <h2 class="product__title">Honey and cream</h2>
+          <p class="product__description">A delicious blend of honey and cream, balancing sweetness and smoothness. An artisanal cookie for anyone who enjoys delicate, comforting flavors.</p>
           <button type="button" class="btn btn--brown" data-preorder="honey-cream">Pre-order</button>
         </div>
       </article>
@@ -79,6 +85,7 @@
         </div>
         <div class="product__body">
           <h2 class="product__title">Choco coffee</h2>
+          <p class="product__description">Rich chocolate meets distinctive coffee notes in a cookie with a deep flavor and irresistible texture. A perfect combination for chocolate and coffee lovers.</p>
           <button type="button" class="btn btn--brown" data-preorder="choco-coffee">Pre-order</button>
         </div>
       </article>
@@ -91,6 +98,7 @@
         </div>
         <div class="product__body">
           <h2 class="product__title">Vanilla Caramel</h2>
+          <p class="product__description">The smoothness of vanilla meets the sweetness of caramel for a warm, creamy, and delicious treat. A classic reinvented in every bite.</p>
           <button type="button" class="btn btn--brown" data-preorder="vanilla-caramel">Pre-order</button>
         </div>
       </article>
