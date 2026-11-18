@@ -3,6 +3,14 @@
    Built from the Figma file "yayis" (Desktop - 1 and Desktop - 2, 1440px)
    ========================================================================== */
 
+@font-face {
+  font-family: "Anak Baik";
+  src: url("./assets/fonts/Anak%20Baik.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --plum-900: #341326;
   --plum-700: #77153c;
