@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yayis — Coffee Pulp Cookies</title>
+  <meta name="description" content="Artisanal cookies made with coffee pulp flour. Made in San Ramón, Costa Rica.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8D%AA%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Patrick+Hand&family=SN+Pro:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="page-home">
+
+  <header class="site-header">
+    <a class="logo" href="index.html" aria-label="Yayis — home">Yayis</a>
+  </header>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="index.html" class="is-active" aria-current="page">What's coming</a>
+    <a href="about.html#about">About us</a>
+    <a href="about.html#products">More Products</a>
+    <a href="about.html#contact">Contact us</a>
+  </nav>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__stage">
+        <button class="hero__cookie hero__cookie--left" type="button" data-flavor="honey-cream" aria-label="Go to Honey and Cream cookies">
+          <img class="hero__img" src="assets/images/hero-honey-cream.png" alt="Honey and Cream cookie" loading="eager">
+        </button>
+        <button class="hero__cookie hero__cookie--right" type="button" data-flavor="vanilla-caramel" aria-label="Go to Vanilla Caramel cookies">
+          <img class="hero__img" src="assets/images/hero-vanilla-caramel.png" alt="Vanilla Caramel cookie" loading="eager">
+        </button>
+        <button class="hero__cookie hero__cookie--center" type="button" data-flavor="choco-coffee" aria-label="Go to Choco Coffee cookies">
+          <img class="hero__img" src="assets/images/hero-choco-coffee.png" alt="Choco Coffee cookie" loading="eager">
+        </button>
+      </div>
+
+      <div class="hero__copy">
+        <h1 class="hero__title" id="hero-title">Coming soon</h1>
+        <p class="hero__subtitle">Discover our cookies made with coffee pulp flour.</p>
+        <button type="button" class="btn btn--brown" data-preorder="">Pre-order</button>
+      </div>
+    </section>
+
+    <div class="marquee" aria-label="Made with coffee pulp flour. Potentially gluten-free. Made from coffee by-products. Sweetened with natural alternatives.">
+      <div class="marquee__track">
+        <div class="marquee__group" aria-hidden="true">
+          <span>Made with coffee pulp flour</span>
+          <span>Potentially gluten-free</span>
+          <span>Made from coffee by-products</span>
+          <span>Sweetened with natural alternatives</span>
+        </div>
+      </div>
+    </div>
+
+    <section class="products" id="cookies" aria-label="Our cookies">
+
+      <article class="product product--img-left reveal" id="honey-cream"
+        style="--img-w:87.7%;--img-ml:4.3%;--ar:657.67/491.06;--title-top:154px;--btn-bottom:11px;--title-ml:26px;--circle-top:-34px;--circle-left:0px;--circle-right:auto;">
+        <div class="product__media">
+          <span class="circle circle--product" aria-hidden="true"></span>
+          <img class="product__img" src="assets/images/honey-cream.png" alt="Honey and Cream cookie" loading="lazy" decoding="async">
+        </div>
+        <div class="product__body">
+          <h2 class="product__title">Honey and cream</h2>
+          <button type="button" class="btn btn--brown" data-preorder="honey-cream">Pre-order</button>
+        </div>
+      </article>
+
+      <article class="product product--img-right reveal" id="choco-coffee"
+        style="--img-w:88.4%;--img-ml:7.7%;--ar:662.66/494.78;--title-top:67px;--btn-bottom:64px;--title-ml:0px;--circle-top:27px;--circle-left:auto;--circle-right:4px;">
+        <div class="product__media">
+          <span class="circle circle--product" aria-hidden="true"></span>
+          <img class="product__img" src="assets/images/choco-coffee.png" alt="Choco Coffee cookie" loading="lazy" decoding="async">
+        </div>
+        <div class="product__body">
+          <h2 class="product__title">Choco coffee</h2>
+          <button type="button" class="btn btn--brown" data-preorder="choco-coffee">Pre-order</button>
+        </div>
+      </article>
+
+      <article class="product product--img-left reveal" id="vanilla-caramel"
+        style="--img-w:92%;--img-ml:2.1%;--ar:689.54/514.86;--title-top:113px;--btn-bottom:63px;--title-ml:46px;--circle-top:-8px;--circle-left:0px;--circle-right:auto;">
+        <div class="product__media">
+          <span class="circle circle--product" aria-hidden="true"></span>
+          <img class="product__img" src="assets/images/vanilla-caramel.png" alt="Vanilla Caramel cookie" loading="lazy" decoding="async">
+        </div>
+        <div class="product__body">
+          <h2 class="product__title">Vanilla Caramel</h2>
+          <button type="button" class="btn btn--brown" data-preorder="vanilla-caramel">Pre-order</button>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer__grid">
+      <a class="footer__logo" href="index.html" aria-label="Yayis — home">Yayis</a>
+
+      <form class="subscribe" data-form="subscribe" novalidate>
+        <div class="subscribe__field" data-field>
+          <label class="visually-hidden" for="footer-email">Email</label>
+          <input id="footer-email" name="email" type="email" placeholder="Email" autocomplete="email" data-validate="required email">
+          <span class="field-error"></span>
+        </div>
+        <button type="submit" class="btn btn--pink">More info</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="footer__about">
+        <p>Cookies made with coffee pulp flour, giving what others discard a second life.</p>
+        <p>Made in San Ramón, Costa Rica.</p>
+      </div>
+
+      <ul class="footer__links">
+        <li><a href="about.html#about">About us</a></li>
+        <li><a href="about.html#contact">Contact us</a></li>
+      </ul>
+
+      <ul class="footer__links">
+        <li><a href="index.html">What's coming</a></li>
+        <li><a href="about.html#products">More Products</a></li>
+      </ul>
+    </div>
+
+    <p class="footer__copy">Copyright: © 2026 Yayis. All rights reserved.</p>
+  </footer>
+
+  <script src="assets/js/script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About us — Yayis</title>
+  <meta name="description" content="Yayis is a Costa Rican venture that transforms coffee pulp into flour and artisanal cookies.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8D%AA%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Patrick+Hand&family=SN+Pro:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="page-about">
+
+  <header class="site-header">
+    <a class="logo" href="index.html" aria-label="Yayis — home">Yayis</a>
+  </header>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="index.html">What's coming</a>
+    <a href="#about">About us</a>
+    <a href="#products">More Products</a>
+    <a href="#contact">Contact us</a>
+  </nav>
+
+  <main>
+    <section class="about" id="about">
+      <div class="wrap">
+        <h1 class="section-title">About Us</h1>
+
+        <div class="about__grid">
+          <div class="about__text">
+            <h2>A New Way to Experience Coffee</h2>
+            <p>Yayis is a Costa Rican food venture born from a coffee-producing company, driven by the idea of transforming coffee by-products into something valuable, delicious and sustainable.</p>
+            <p>Our inspiration comes from coffee pulp, a resource often overlooked during coffee production. By transforming it into flour, we aim to give it a second life, making the most of its nutritional potential, including dietary fiber and naturally occurring compounds, while promoting more responsible and creative food production.</p>
+
+            <h3>More Than Just Cookies</h3>
+            <p>Our journey begins with our first collection of artisanal crumble cookies, made with coffee pulp flour and created to bring together great flavor, creativity and sustainability. Available in three unique flavors — Honey &amp; Cream, Choco Coffee and Vanilla Caramel — our cookies introduce a new way to enjoy the possibilities of coffee beyond the cup.</p>
+
+            <h3>Our Vision</h3>
+            <p>Rooted in Costa Rica's coffee culture, we aspire to introduce Yayis to local consumers and international visitors, sharing an innovative product that reflects our commitment to sustainability and local creativity.</p>
+            <p>Our vision goes beyond cookies. We hope to expand our product line, explore new ways to use coffee pulp and eventually open our own café: a space where coffee, delicious food and conscious consumption come together.</p>
+            <p class="about__closing">Yayis — Giving coffee a second life, one bite at a time.</p>
+          </div>
+
+          <img class="about__photo" src="assets/images/about-cafe.png" alt="Hands holding coffee pulp" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </section>
+
+    <div class="cream">
+      <section class="more-products" id="products">
+        <div class="wrap">
+          <h2 class="section-title">More Products</h2>
+
+          <article class="bag reveal">
+            <div class="bag__media">
+              <span class="circle" aria-hidden="true"></span>
+              <img class="bag__img" src="assets/images/bolsa-harina.png" alt="Yayis coffee pulp flour bag, 1 kg" loading="lazy" decoding="async">
+            </div>
+            <div class="bag__body">
+              <h3 class="bag__title">Coffee Pulp Flour</h3>
+              <p class="bag__text">Coffee pulp flour is made by processing, drying, and milling the pulp of the coffee fruit. This plant-based ingredient contains dietary fiber and naturally occurring bioactive compounds. It can be used in baked goods such as cookies, cakes, breads, and pancakes. Store in a cool, dry place, protected from moisture and direct sunlight. Net weight: 1 kg.</p>
+              <button type="button" class="btn btn--brown" data-preorder="coffee-flour">Order now</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="contact" id="contact" aria-labelledby="contact-title">
+        <div class="contact__card reveal">
+          <h2 class="contact__title" id="contact-title">Fill the form<br>to contact us</h2>
+
+          <form class="contact-form" data-form="contact" novalidate>
+            <div class="cf-row">
+              <label for="cf-name">First Name</label>
+              <div class="cf-cell" data-field>
+                <input id="cf-name" name="name" type="text" autocomplete="given-name" data-validate="required">
+                <span class="field-error"></span>
+              </div>
+            </div>
+
+            <div class="cf-row">
+              <label for="cf-email">E-mail</label>
+              <div class="cf-cell" data-field>
+                <input id="cf-email" name="email" type="email" autocomplete="email" data-validate="required email">
+                <span class="field-error"></span>
+              </div>
+            </div>
+
+            <div class="cf-row cf-row--action">
+              <label for="cf-message">How can we help you?</label>
+              <div class="cf-cell" data-field>
+                <textarea id="cf-message" name="message" rows="1" data-validate="required"></textarea>
+                <span class="field-error"></span>
+              </div>
+              <button type="submit" class="btn btn--pink">Send Message</button>
+            </div>
+
+            <p class="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer__grid">
+      <a class="footer__logo" href="index.html" aria-label="Yayis — home">Yayis</a>
+
+      <form class="subscribe" data-form="subscribe" novalidate>
+        <div class="subscribe__field" data-field>
+          <label class="visually-hidden" for="footer-email">Email</label>
+          <input id="footer-email" name="email" type="email" placeholder="Email" autocomplete="email" data-validate="required email">
+          <span class="field-error"></span>
+        </div>
+        <button type="submit" class="btn btn--pink">More info</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="footer__about">
+        <p>Cookies made with coffee pulp flour, giving what others discard a second life.</p>
+        <p>Made in San Ramón, Costa Rica.</p>
+      </div>
+
+      <ul class="footer__links">
+        <li><a href="#about">About us</a></li>
+        <li><a href="#contact">Contact us</a></li>
+      </ul>
+
+      <ul class="footer__links">
+        <li><a href="index.html">What's coming</a></li>
+        <li><a href="#products">More Products</a></li>
+      </ul>
+    </div>
+
+    <p class="footer__copy">Copyright: © 2026 Yayis. All rights reserved.</p>
+  </footer>
+
+  <script src="assets/js/script.js" defer></script>
+</body>
+</html>
