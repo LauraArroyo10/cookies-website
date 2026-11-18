@@ -20,19 +20,19 @@
   const PRODUCTS = {
     'honey-cream': {
       name: 'Honey and cream',
-      desc: 'A delicious blend of honey and cream, balancing sweetness and smoothness. An artisanal cookie for anyone who enjoys delicate, comforting flavors.'
+      desc: 'A delicious blend of honey and cream that balances sweetness and smoothness. An artisanal cookie for those who enjoy delicate, comforting flavors.'
     },
     'choco-coffee': {
       name: 'Choco coffee',
-      desc: 'Rich chocolate meets distinctive coffee notes in a cookie with a deep flavor and irresistible texture. A perfect combination for chocolate and coffee lovers.'
+      desc: 'Chocolate intensity meets distinctive coffee notes in a cookie with deep flavor and an irresistible texture. A perfect combination for chocolate and coffee lovers.'
     },
     'vanilla-caramel': {
       name: 'Vanilla Caramel',
-      desc: 'The smoothness of vanilla meets the sweetness of caramel for a warm, creamy, and delicious treat. A classic reinvented in every bite.'
+      desc: 'The smoothness of vanilla combines with the sweet flavor of caramel to create a warm, creamy, and delicious experience. A classic reinvented in every bite.'
     },
     'coffee-flour': {
       name: 'Coffee Pulp Flour (1 kg)',
-      desc: 'A plant-based ingredient containing dietary fiber and naturally occurring bioactive compounds. Ideal for cookies, cakes, breads, and pancakes.'
+      desc: 'A plant-based ingredient with dietary fiber and naturally occurring bioactive compounds. Ideal for cookies, cakes, breads, and pancakes.'
     }
   };
 
@@ -222,42 +222,52 @@
         <button type="button" class="modal__close" aria-label="Close">&times;</button>
         <h2 id="order-title">Pre-order</h2>
 
-        <form novalidate>
-          <div class="field" data-field>
+        <form class="contact-form" novalidate>
+          <div class="cf-row">
             <label for="order-product">Product</label>
-            <select id="order-product" name="product" data-validate="required">
-              <option value="">Choose one…</option>
-              ${options}
-            </select>
-            <span class="field-error"></span>
+            <div class="cf-cell" data-field>
+              <select id="order-product" name="product" data-validate="required">
+                <option value="">Choose one…</option>
+                ${options}
+              </select>
+              <span class="field-error"></span>
+            </div>
           </div>
           <p class="modal__desc" aria-live="polite"></p>
 
-          <div class="field" data-field>
+          <div class="cf-row">
             <label for="order-name">Name</label>
-            <input id="order-name" name="name" type="text" autocomplete="name" data-validate="required">
-            <span class="field-error"></span>
+            <div class="cf-cell" data-field>
+              <input id="order-name" name="name" type="text" autocomplete="name" data-validate="required">
+              <span class="field-error"></span>
+            </div>
           </div>
 
-          <div class="field" data-field>
+          <div class="cf-row">
             <label for="order-email">E-mail</label>
-            <input id="order-email" name="email" type="email" autocomplete="email" data-validate="required email">
-            <span class="field-error"></span>
+            <div class="cf-cell" data-field>
+              <input id="order-email" name="email" type="email" autocomplete="email" data-validate="required email">
+              <span class="field-error"></span>
+            </div>
           </div>
 
-          <div class="field" data-field>
+          <div class="cf-row">
             <label for="order-qty">Quantity</label>
-            <input id="order-qty" name="quantity" type="number" min="1" max="24" value="1" inputmode="numeric" data-validate="required quantity">
-            <span class="field-error"></span>
+            <div class="cf-cell" data-field>
+              <input id="order-qty" name="quantity" type="number" min="1" max="24" value="1" inputmode="numeric" data-validate="required quantity">
+              <span class="field-error"></span>
+            </div>
           </div>
 
-          <button type="submit" class="btn btn--brown btn--small">Send</button>
+          <div class="modal__actions">
+            <button type="submit" class="btn btn--pink">Send</button>
+          </div>
           <p class="form-status" role="status" aria-live="polite"></p>
         </form>
 
         <div class="modal__done" hidden>
           <p></p>
-          <button type="button" class="btn btn--brown btn--small" data-close>Close</button>
+          <button type="button" class="btn btn--pink" data-close>Close</button>
         </div>
       </div>`;
     document.body.append(dialog);
@@ -377,44 +387,6 @@
   }
 
   /* ------------------------------------------------------------------
-     Mobile navigation
-     ------------------------------------------------------------------ */
-  function initMobileNav() {
-    const button = $('.menu-toggle');
-    const nav = $('.site-nav');
-    if (!button || !nav) return;
-
-    const close = (returnFocus) => {
-      button.setAttribute('aria-expanded', 'false');
-      button.setAttribute('aria-label', 'Open navigation menu');
-      nav.classList.remove('is-open');
-      if (returnFocus) button.focus();
-    };
-
-    button.addEventListener('click', () => {
-      const isOpen = button.getAttribute('aria-expanded') === 'true';
-      if (isOpen) {
-        close(false);
-        return;
-      }
-
-      button.setAttribute('aria-expanded', 'true');
-      button.setAttribute('aria-label', 'Close navigation menu');
-      nav.classList.add('is-open');
-    });
-
-    nav.addEventListener('click', (event) => {
-      if (event.target.closest('a')) close(false);
-    });
-
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && button.getAttribute('aria-expanded') === 'true') {
-        close(true);
-      }
-    });
-  }
-
-  /* ------------------------------------------------------------------
      Reveal on scroll
      ------------------------------------------------------------------ */
   function initReveal() {
@@ -460,69 +432,13 @@
     });
   }
 
-  /* ------------------------------------------------------------------
-     Automatic cookie carousel
-     ------------------------------------------------------------------ */
-  function initHeroCarousel() {
-    const stage = $('.hero__stage');
-    if (!stage || reducedMotion) return;
-
-    const cookies = $$('.hero__cookie', stage);
-    if (cookies.length !== 3) return;
-
-    let timer;
-    const nextPosition = {
-      left: 'right',
-      center: 'left',
-      right: 'center'
-    };
-
-    const rotate = () => {
-      cookies.forEach((cookie) => {
-        const current = Object.keys(nextPosition).find((position) =>
-          cookie.classList.contains(`hero__cookie--${position}`)
-        );
-        if (!current) return;
-        cookie.classList.remove(`hero__cookie--${current}`);
-        cookie.classList.add(`hero__cookie--${nextPosition[current]}`);
-      });
-    };
-
-    const start = () => {
-      clearInterval(timer);
-      timer = setInterval(rotate, 4000);
-    };
-
-    cookies.forEach((cookie) => {
-      cookie.addEventListener('click', () => {
-        const target = document.getElementById(cookie.dataset.flavor);
-        if (!target) return;
-        clearInterval(timer);
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-    });
-
-    stage.addEventListener('mouseenter', () => clearInterval(timer));
-    stage.addEventListener('mouseleave', start);
-    stage.addEventListener('focusin', () => clearInterval(timer));
-    stage.addEventListener('focusout', start);
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) clearInterval(timer);
-      else start();
-    });
-
-    start();
-  }
-
   /* ------------------------------------------------------------------ */
   function init() {
     initImageFallbacks();
     initMarquee();
-    initHeroCarousel();
     initForms();
     initOrderDialog();
     initNavSpy();
-    initMobileNav();
     initReveal();
   }
 
