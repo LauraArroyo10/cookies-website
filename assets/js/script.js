@@ -387,6 +387,44 @@
   }
 
   /* ------------------------------------------------------------------
+     Mobile navigation
+     ------------------------------------------------------------------ */
+  function initMobileNav() {
+    const button = $('.menu-toggle');
+    const nav = $('.site-nav');
+    if (!button || !nav) return;
+
+    const close = (returnFocus) => {
+      button.setAttribute('aria-expanded', 'false');
+      button.setAttribute('aria-label', 'Open navigation menu');
+      nav.classList.remove('is-open');
+      if (returnFocus) button.focus();
+    };
+
+    button.addEventListener('click', () => {
+      const isOpen = button.getAttribute('aria-expanded') === 'true';
+      if (isOpen) {
+        close(false);
+        return;
+      }
+
+      button.setAttribute('aria-expanded', 'true');
+      button.setAttribute('aria-label', 'Close navigation menu');
+      nav.classList.add('is-open');
+    });
+
+    nav.addEventListener('click', (event) => {
+      if (event.target.closest('a')) close(false);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && button.getAttribute('aria-expanded') === 'true') {
+        close(true);
+      }
+    });
+  }
+
+  /* ------------------------------------------------------------------
      Reveal on scroll
      ------------------------------------------------------------------ */
   function initReveal() {
@@ -506,6 +544,7 @@
     initForms();
     initOrderDialog();
     initNavSpy();
+    initMobileNav();
     initReveal();
     initHeroCarousel();
   }
