@@ -413,6 +413,73 @@
   }
 
   /* ------------------------------------------------------------------
+     Hero cookie carousel and product links
+     ------------------------------------------------------------------ */
+  function initHeroCarousel() {
+    const stage = $('.hero__stage');
+    if (!stage) return;
+
+    const cookies = $$('[data-flavor]', stage);
+    if (cookies.length !== 3) return;
+
+    const scrollToProduct = (button) => {
+      const target = document.getElementById(button.dataset.flavor);
+      if (!target) return;
+      target.scrollIntoView({
+        behavior: reducedMotion ? 'auto' : 'smooth',
+        block: 'start'
+      });
+    };
+
+    cookies.forEach((button) => {
+      button.addEventListener('click', () => {
+        scrollToProduct(button);
+      });
+    });
+
+    if (reducedMotion) return;
+
+    const nextPosition = {
+      left: 'right',
+      center: 'left',
+      right: 'center'
+    };
+    let timer;
+
+    const rotate = () => {
+      cookies.forEach((button) => {
+        const current = Object.keys(nextPosition).find((position) =>
+          button.classList.contains(`hero__cookie--${position}`)
+        );
+        if (!current) return;
+        button.classList.remove(`hero__cookie--${current}`);
+        button.classList.add(`hero__cookie--${nextPosition[current]}`);
+      });
+    };
+
+    const stop = () => {
+      window.clearInterval(timer);
+      timer = undefined;
+    };
+    const start = () => {
+      stop();
+      if (!document.hidden) timer = window.setInterval(rotate, 4000);
+    };
+
+    stage.addEventListener('mouseenter', stop);
+    stage.addEventListener('mouseleave', start);
+    stage.addEventListener('focusin', stop);
+    stage.addEventListener('focusout', (event) => {
+      if (!stage.contains(event.relatedTarget)) start();
+    });
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) stop();
+      else start();
+    });
+    start();
+  }
+
+  /* ------------------------------------------------------------------
      Missing-image placeholders (shows which file to drop in /assets)
      ------------------------------------------------------------------ */
   function initImageFallbacks() {
@@ -440,6 +507,7 @@
     initOrderDialog();
     initNavSpy();
     initReveal();
+    initHeroCarousel();
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
