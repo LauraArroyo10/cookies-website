@@ -550,6 +550,12 @@ select {
   margin-top: auto;
 }
 
+.bag__body .btn--brown {
+  width: 220px;
+  height: 58px;
+  font-size: 22px;
+}
+
 /* ---------- Contact card ---------- */
 
 .contact {
